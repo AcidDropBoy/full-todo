@@ -20,35 +20,21 @@ const App = ({ minutes, seconds, setEditCounter }) => {
   const [label, setLabel] = useState(false);
   const classLabel = label ? 'icon-play' : 'icon-pause';
 
-  let timer;
-
-  function stopTimer() {
-   clearTimeout(timer);
-    console.log('stop timer');
-  }
-
-  function startTimer() {
-   if (counter > 0) {
-     timer = setTimeout(() => setCounter(counter - 1), 1000);
-     console.log('counter - 1');
-   }
- }
-
   useEffect(() => {
-    if (label) {
-      stopTimer();
-      console.log('label-');
-    } else {
-      startTimer();
-      console.log('label+');
+    if (!label) {
+      const timer = setInterval(() => {
+        setCounter((counter) => counter - 1);
+      }, 1000);
+      return () => clearInterval(timer);
     }
-  });
+    return undefined;
+  }, [label]);
 
   setEditCounter(counter);
 
   return (
     <div className="timer">
-      <button className={classLabel} type="button" onClick={() => setLabel(!label)} />
+      <button className={classLabel} aria-label={classLabel} type="button" onClick={() => setLabel(!label)} />
       {counter === 0 ? 'Time over' : <div>{format(counter)}</div>}
     </div>
   );
@@ -57,13 +43,13 @@ const App = ({ minutes, seconds, setEditCounter }) => {
 App.defaultProps = {
   minutes: '0',
   seconds: '0',
-  SetEditCounter: () => {},
+  setEditCounter: () => {},
 };
 
 App.propTypes = {
   minutes: PropTypes.string,
   seconds: PropTypes.string,
-  SetEditCounter: PropTypes.func,
+  setEditCounter: PropTypes.func,
 };
 
 export default App;

@@ -18,9 +18,9 @@ const TodoApp = () => {
       description,
       done: false,
       id: newId,
-		dataTask: new Date(),
-		minutes,
-		seconds,
+      dataTask: new Date(),
+      minutes,
+      seconds,
     };
 
     const newTodoData = [...todoData, newTask];

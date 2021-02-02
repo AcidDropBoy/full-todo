@@ -13,33 +13,33 @@ const NewTaskForm = ({ addTask }) => {
       onSubmit={(event) => {
         event.preventDefault();
         addTask(description, minutes, seconds);
-		  setDescription('');
-		  setMinutes('');
-		  setSeconds('');
+        setDescription('');
+        setMinutes('');
+        setSeconds('');
       }}
     >
       <input
         className="new-todo"
-		  placeholder="Task"
-		  name="description"
+        placeholder="Task"
+        name="description"
         onChange={(event) => setDescription(event.target.value)}
         value={description}
       />
-		<input 
-		  className="new-todo-form__timer"
-		  placeholder="Min"
-		  name="minutes"
-		  onChange={(event) => setMinutes(event.target.value)}
-		  value={minutes}
-		/>
-		<input
-		  className="new-todo-form__timer"
-		  placeholder="Sec"
-		  name="seconds"
-		  onChange={(event) => setSeconds(event.target.value)}
-		  value={seconds}
-		/>
-		<input type="submit" value="Добавить" hidden />
+      <input
+        className="new-todo-form__timer"
+        placeholder="Min"
+        name="minutes"
+        onChange={(event) => setMinutes(event.target.value)}
+        value={minutes}
+      />
+      <input
+        className="new-todo-form__timer"
+        placeholder="Sec"
+        name="seconds"
+        onChange={(event) => setSeconds(event.target.value)}
+        value={seconds}
+      />
+      <input type="submit" value="Добавить" hidden />
     </form>
   );
 };

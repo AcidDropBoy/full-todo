@@ -18,7 +18,7 @@ const Task = ({ id, description, minutes, seconds, deleteTask, onToggleDone, don
             <input className="toggle" type="checkbox" onChange={onToggleDone} checked={done} />
             <label>
               <span className="description">{description}</span>
-				  <App minutes={minutes} seconds={seconds} setEditCounter={setEditCounter} />
+              <App minutes={minutes} seconds={seconds} setEditCounter={setEditCounter} />
               <span className="created">
                 created{' '}
                 {formatDistanceToNow(dataTask, {
