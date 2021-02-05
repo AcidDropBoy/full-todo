@@ -20,10 +20,10 @@ const App = ({ minutes, seconds, setEditCounter }) => {
   const [label, setLabel] = useState(false);
   const classLabel = label ? 'icon-play' : 'icon-pause';
 
-  useEffect(() => {
-    if (!label) {
+  useEffect(() => { 
+     if (!label) {
       const timer = setInterval(() => {
-        setCounter((counter) => counter - 1);
+         setCounter((counter) => counter === 0 ? 0 : counter - 1);
       }, 1000);
       return () => clearInterval(timer);
     }
